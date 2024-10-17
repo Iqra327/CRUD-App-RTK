@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container{
+  @apply w-full max-w-4xl mx-auto 
+}
+
+.h2{
+  @apply flex items-center justify-center sm:text-4xl max-sm:text-3xl font-bold mb-7 text-center
+}
