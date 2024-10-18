@@ -1,12 +1,20 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Button from './Button';
 import { Link } from 'react-router-dom';
-import Edit from './Edit';
+import { deleteUser } from './store/UserSlice';
 
 const Home = () => {
   const users = useSelector((state) => state.users);
+  const dispatch = useDispatch();
 
+  const handleDelete = (id) => {
+    dispatch(deleteUser({
+      id
+    }))  
+  };
+
+  console.log('home:', users)
   return (
     <section className='container mt-14'>
       <div className='flex flex-col gap-4 flex-wrap'>
@@ -48,12 +56,11 @@ const Home = () => {
                       />
                     </Link>
                     
-                    <Link to='/delete'>
-                      <Button 
+                      <Button
+                        onClick = {() => handleDelete(user.id)}
                         label='Delete'
                         classes='bg-red-500 hover:bg-red-600'
                       />
-                    </Link>
                   </td>
                 </tr>
               ))
